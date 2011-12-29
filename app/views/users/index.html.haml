@@ -1,0 +1,24 @@
+%br
+%center
+  .row_hover
+    %table{:border => 0, :class => "mid_bg", :cellspacing => 0, :cellpadding => "10"}
+      %tr{:style => "font-weight:bold;background-color: blue;color:white"}
+        %th{:align => "left"} RJ ID
+        %th{:align => "left"} Email ID
+        %th 
+        - if(@current_user.role.rolename == ADMIN)
+          %th 
+          %th 
+      - @users.each do |user|
+        %tr.datarow{:class => cycle('list_line_odd','list_line_even')}
+          %td{:align => "left"} 
+            = user.username
+          %td{:align => "left"} 
+            = user.email 
+          %td 
+            = link_to 'Show', user, :class => "action_bar", :title => "Show RJ details" 
+          - if(@current_user.role.rolename == ADMIN)
+            %td 
+              = link_to 'Edit', edit_user_path(user), :class => "action_bar"  , :title => "Edit RJ details"
+            %td 
+              = link_to 'Delete', user, :confirm => "Are you sure to delete #{user.username}'s account?", :method => :delete, :class => "action_bar" , :title => "Delete RJ account"

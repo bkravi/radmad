@@ -1,0 +1,17 @@
+!!!
+%html{:xmlns => "http://www.w3.org/1999/xhtml"}
+  %head
+    %title My Experience @Radio Madhuban
+    = stylesheet_link_tag "application", "datepicker", "facebox", "colorbox", "custom"
+    = javascript_include_tag 'jquery', 'jquery_ujs', 'jquery-ui', 'common', 'facebox' , 'jquery.colorbox', 'jquery.colorbox-min', 'rails'
+    = csrf_meta_tag
+  %body
+    %table{:cellpadding=>"0", :cellspacing=>"0", :align => "center", :border => 1}
+      %tr
+        %td
+          = image_tag('header.png')
+      %tr{:height => "40px"}
+        %td{:style => "background-color:black;font-size:30px;color:#8EC320;font-weight:bold;font-family:Arial,sans-serif;"}
+          %center Welcome To Radio Madhuban Experience Sharing Portal
+    %div{:style => "font-family:Arial,sans-serif;"}
+      = yield

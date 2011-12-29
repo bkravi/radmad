@@ -1,0 +1,40 @@
+!!!
+%html{:xmlns => "http://www.w3.org/1999/xhtml"}
+  %head
+    %title My Experience @Radio Madhuban
+    = stylesheet_link_tag "application", "datepicker", "facebox", "colorbox", "custom"
+    = javascript_include_tag 'jquery', 'jquery_ujs', 'jquery-ui', 'common', 'facebox' , 'jquery.colorbox', 'jquery.colorbox-min', 'rails'
+    = csrf_meta_tag
+  %body
+    %table{:cellpadding=>"0", :cellspacing=>"0", :align => "center", :border => 1}
+      %tr
+        %td{:colspan => 2}
+          = image_tag('header.png')
+      %tr{:height => "40px", :style => "background-color:black"}
+        %td{:style => "border:0"}
+          .menu_bar
+            &nbsp;
+            %a{:href => users_path, :title => "Show all RJ account"} RJ List 
+            &nbsp;
+            - if(current_user.role.rolename == ADMIN)
+              %a{:href => new_user_path, :title => "Create new RJ account"} Create New RJ
+            - else
+              = link_to "My Day At Radio Madhuban", myday_path, :title => "Tell me how was your day at radio madhuban"
+              &nbsp;
+              = link_to "My Profile", myprofile_path, :title => "Update profile"
+        %td{:align => "right",:style => "border:0"}
+          .menu_bar
+            = link_to "Log out", logout_path, :title => "Bye-Bye... Peaceful time ahead !"
+            &nbsp;
+    %table{:cellpadding=>"0", :cellspacing=>"0", :align => "center", :border => 0}
+      %tr
+        %td{:colspan => 2, :align => "center"}
+          = image_tag('burning_line.gif')
+      %tr
+        %td{:colspan => 2, :align => "center"}
+          %b= "Welcome #{current_user.username}"
+      %tr
+        %td{:colspan => 2, :align => "center"}
+          = image_tag('burning_line.gif')
+    %div{:style => "font-family:Arial,sans-serif;font-size:13px"}
+      = yield

@@ -1,0 +1,41 @@
+%br
+%center
+  - form_for(@user) do |f|
+    %table{:border => 0, :class => "mid_bg"}
+      %tr
+        %td{:colspan => 2, :align => "right"}
+          - if(@controller.action_name=="edit")
+            = link_to 'Show', @user, :class => "action_bar", :title => "Show me the RJ details" 
+          &nbsp;
+          = link_to 'Cancel', users_path, :class => "action_bar", :title => "Back to RJ List" 
+          &nbsp;
+      %tr
+        %td{:colspan => 2, :align => "left", :style => "color:red"}
+          %h3 &nbsp; Fields marked as '*' are mandatory !
+      %tr
+        %td{:colspan => 2}
+          = render "shared/error_messages", :target => @user
+      %tr
+        %td{:align => "left"}
+          %b= f.label :username, "RJ ID*"
+        %td{:align => "left"}
+          = f.text_field :username
+      %tr
+        %td{:align => "left"}
+          %b= f.label :password, "Password*"
+        %td{:align => "left"}
+          = f.password_field :password
+      %tr
+        %td{:align => "left"}
+          %b= f.label :password_confirmation, "Password confirmation*"
+        %td{:align => "left"}
+          = f.password_field :password_confirmation
+      %tr
+        %td{:align => "left"}
+          %b= f.label :email, "Email ID*"
+        %td{:align => "left"}
+          = f.text_field :email
+      %tr
+        %td{:colspan => 2, :align => "center"}
+          %br
+          = f.submit

@@ -1,0 +1,28 @@
+%br
+= render "shared/flash_messages"
+%table{:border => 0, :align => "center"}
+  %tr
+    %td{:colspan => "2", :align => "center"}
+      = image_tag('burning_line.gif')
+  %tr
+    %td{:align => "center"}
+      = image_tag("logo.jpg")
+    %td{:align => "center"}
+      - form_for @user_session do |form|
+        %table{:style => "padding-top:0px", :cellspacing=>"20", :border => "0"}
+          %tr
+            %td
+              %b= form.label :username, "Your RJ ID"
+            %td
+              = form.text_field :username, :class => "text_field_area"
+          %tr
+            %td
+              %b= form.label :password, "Password"
+            %td
+              = form.password_field :password, :class => "text_field_area"
+          %tr
+            %td{:colspan => "2", :align=>"center"}
+              = form.submit "Please Enter", :style => 'width:120px;height:25px;font-weight:bold'
+  %tr
+    %td{:colspan => "2", :align => "center"}
+      = image_tag('burning_line.gif')
