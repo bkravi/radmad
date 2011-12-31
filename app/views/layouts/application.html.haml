@@ -3,7 +3,7 @@
   %head
     %title My Experience @Radio Madhuban
     = stylesheet_link_tag "application", "datepicker", "facebox", "colorbox", "custom"
-    = javascript_include_tag 'jquery', 'jquery_ujs', 'jquery-ui', 'common', 'facebox' , 'jquery.colorbox', 'jquery.colorbox-min', 'rails'
+    = javascript_include_tag 'jquery', 'jquery_ujs', 'jquery-ui', 'common', 'facebox' , 'jquery.colorbox', 'jquery.colorbox-min', 'rails', 'jquery.cycle.all.js', 'jquery.easing.1.3.js'
     = csrf_meta_tag
   %body
     %table{:cellpadding=>"0", :cellspacing=>"0", :align => "center", :border => 1}
@@ -17,7 +17,7 @@
             %a{:href => users_path, :title => "Show all RJ account"} RJ List 
             &nbsp;
             - if(current_user.role.rolename == ADMIN)
-              %a{:href => new_user_path, :title => "Create new RJ account"} Create New RJ
+              %a{:href => new_user_path,:title => "Create new RJ account"} Create New RJ
             - else
               = link_to "My Day At Radio Madhuban", myday_path, :title => "Tell me how was your day at radio madhuban"
               &nbsp;
@@ -26,15 +26,18 @@
           .menu_bar
             = link_to "Log out", logout_path, :title => "Bye-Bye... Peaceful time ahead !"
             &nbsp;
+    %br
     %table{:cellpadding=>"0", :cellspacing=>"0", :align => "center", :border => 0}
       %tr
-        %td{:colspan => 2, :align => "center"}
-          = image_tag('burning_line.gif')
+        %td{:align => "center", :style => "color:#009900;padding-left:15px;padding-right:15px;font-family:Arial,sans-serif;font-size:23px"}
+          %b= "Welcome #{current_user.username} to Experience Sharing Portal !"
       %tr
-        %td{:colspan => 2, :align => "center"}
-          %b= "Welcome #{current_user.username}"
+        %td
+          %br
       %tr
-        %td{:colspan => 2, :align => "center"}
-          = image_tag('burning_line.gif')
+        %td{:align => "center", :style => "padding-left:15px;padding-right:15px"}
+          %div{:id => "cycle_pic"}
+            %img{:src => "images/blankpic.jpg", :title => "Photo yet to be uploaded !"}
+            %img{:src => "images/rjravi.jpg", :title => "Ravi Tewari, Bangalore"}
     %div{:style => "font-family:Arial,sans-serif;font-size:13px"}
       = yield

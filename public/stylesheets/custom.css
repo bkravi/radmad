@@ -42,3 +42,20 @@ table tr.list_line_even {
   font-size: 12px;list-style: square;margin-top:15px;padding:0px;}
 #errorExplanation li{
   margin-left:18px;text-align:left}
+#slideshow{
+  position:relative;
+  height:64px;} /*Image height*/
+#slideshow IMG{
+  position:absolute;
+  top:0;
+  left:0;
+  z-index:8;}
+#slideshow IMG.active{
+  z-index:10;}
+#slideshow IMG.last-active{
+  z-index:9;}
+#cycle_pic{
+  height:180;width:180;padding:0;margin:0;} /*Image height+padding_offset, width+padding_offset*/ 
+#cycle_pic img{
+  padding:15px;border:1px solid #ccc;background-color:#eee;width:150px;height:150px;top:0;left:0;border-radius:15px} /*Image height & width*/
+
